@@ -21,7 +21,7 @@ class MailgunHandler extends SocketHandler
 
     public function __construct($to, $subject, $from, $token, $domain, $level = Logger::CRITICAL, $bubble = true, $useSSL = true, $host = 'api.mailgun.net', $version = 'v3')
     {
-        if($version !== 'v3'){
+        if ($version !== 'v3') {
             throw new Exception("Version '{$version}' is not supported");
         }
 
@@ -46,7 +46,7 @@ class MailgunHandler extends SocketHandler
     protected function generateDataStream($record)
     {
         $content = $this->buildContent($record);
-        return $this->buildHeader($content) . $content;
+        return $this->buildHeader($content).$content;
     }
 
     /**
@@ -93,7 +93,7 @@ class MailgunHandler extends SocketHandler
         $header .= "Authorization: Basic ".$auth."\r\n";
         $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
         $header .= "Cache-Control: no-cache\r\n";
-        $header .= "Content-Length: " . strlen($content) . "\r\n";
+        $header .= "Content-Length: ".strlen($content)."\r\n";
         $header .= "\r\n";
 
         return $header;
