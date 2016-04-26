@@ -64,7 +64,7 @@ class MailgunHandler extends SocketHandler
             'text'    => $record['formatted']
         );
 
-        return json_encode($dataArray);
+        return http_build_query($dataArray);
     }
 
     /**
@@ -90,21 +90,12 @@ class MailgunHandler extends SocketHandler
         $header = $this->buildRequestUrl();
 
         $header .= "Host: {$this->host}\r\n";
-        $header .= "Authorization: Basic ".$auth."\r\n";;
-        $header .= "Content-Type: application/json\r\n";
+        $header .= "Authorization: Basic ".$auth."\r\n";
+        $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
+        $header .= "Cache-Control: no-cache\r\n";
         $header .= "Content-Length: " . strlen($content) . "\r\n";
         $header .= "\r\n";
-        return $header;
-    }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param array $record
-     */
-    protected function write(array $record)
-    {
-        parent::write($record);
-        $this->closeSocket();
+        return $header;
     }
 }
