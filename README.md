@@ -1,4 +1,4 @@
-# SMS Monolog Handler
+# Monolog Mailgun Handler
 [![Latest Version](https://img.shields.io/github/release/tylercd100/monolog-mailgun.svg?style=flat-square)](https://github.com/tylercd100/monolog-mailgun/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://travis-ci.org/tylercd100/monolog-mailgun.svg?branch=master)](https://travis-ci.org/tylercd100/monolog-mailgun)
