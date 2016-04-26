@@ -20,7 +20,13 @@ composer require tylercd100/monolog-mailgun
 ```php
 use Tylercd100\Monolog\Handler\MailgunHandler;
 
-$handler = new MailgunHandler();
+$to      = "to@test.com";
+$from    = "from@test.com";
+$subject = "Test Email!";
+$token   = "1onfifaln234nfkdo02";
+$domain  = "test.com";
+
+$handler = new MailgunHandler($to, $subject, $from, $token, $domain);
 $logger  = new Monolog\Logger('mailgun.example');
 $logger->pushHandler($handler);
 $logger->addCritical("Foo Bar!");
