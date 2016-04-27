@@ -18,7 +18,7 @@ class MailgunHandler extends MailHandler
 
     public function __construct($to, $subject, $from, $token, $domain, $level = Logger::CRITICAL, $bubble = true, $host = 'api.mailgun.net', $version = 'v3')
     {
-        if($version !== 'v3'){
+        if ($version !== 'v3') {
             throw new Exception("Version '{$version}' is not supported");
         }
 

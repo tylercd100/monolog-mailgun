@@ -22,27 +22,10 @@ class MailgunHandlerTest extends TestCase
     private function createHandler($to = "to@test.com",$subject = "Test subject",$from = "from@test.com",$token = "Token",$domain = "test.com", $level = Logger::CRITICAL, $bubble = true, $host = 'api.mailgun.net', $version = 'v3')
     {
         $constructorArgs = array($to, $subject, $from, $token, $domain, $level, $bubble, $host, $version);
-        $this->res = fopen('php://memory', 'a');
         $this->handler = $this->getMock(
             '\Tylercd100\Monolog\Handler\MailgunHandler',
-            array('fsockopen', 'streamSetTimeout', 'closeSocket'),
+            array(),
             $constructorArgs
         );
-
-        $reflectionProperty = new \ReflectionProperty('\Monolog\Handler\SocketHandler', 'connectionString');
-        $reflectionProperty->setAccessible(true);
-        $reflectionProperty->setValue($this->handler, 'localhost:1234');
-
-        $this->handler->expects($this->any())
-            ->method('fsockopen')
-            ->will($this->returnValue($this->res));
-        $this->handler->expects($this->any())
-            ->method('streamSetTimeout')
-            ->will($this->returnValue(true));
-        $this->handler->expects($this->any())
-            ->method('closeSocket')
-            ->will($this->returnValue(true));
-
-        $this->handler->setFormatter($this->getIdentityFormatter());
     }
 }
