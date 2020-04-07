@@ -36,7 +36,7 @@ class MailgunHandler extends MailHandler
     /**
      * {@inheritdoc}
      */
-    protected function send($content, array $records)
+    protected function send(string $content, array $records): void
     {
         $auth = base64_encode("api:".$this->token);
 
