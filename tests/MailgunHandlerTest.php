@@ -22,10 +22,7 @@ class MailgunHandlerTest extends TestCase
     private function createHandler($to = "to@test.com",$subject = "Test subject",$from = "from@test.com",$token = "Token",$domain = "test.com", $level = Logger::CRITICAL, $bubble = true, $host = 'api.mailgun.net', $version = 'v3')
     {
         $constructorArgs = array($to, $subject, $from, $token, $domain, $level, $bubble, $host, $version);
-        $this->handler = $this->getMock(
-            '\Tylercd100\Monolog\Handler\MailgunHandler',
-            array(),
-            $constructorArgs
-        );
+        $this->handler = $this->getMockBuilder(MailgunHandler::class)
+            ->setConstructorArgs($constructorArgs)->getMock();
     }
 }
