@@ -12,8 +12,9 @@
 namespace Tylercd100\Monolog\Tests;
 
 use Monolog\Logger;
+use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 
-class TestCase extends \PHPUnit_Framework_TestCase
+class TestCase extends PHPUnitTestCase
 {
     /**
      * @return array Record
